@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comprovante de Dedetização Grátis</title>
+<meta name="description" content="Gere grátis o comprovante de execução de serviço de controle de pragas no modelo da RDC 622/2022 da Anvisa. Pronto em 2 minutos, em PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ====== CONFIGURE AQUI ====== */
+  /* O número do WhatsApp e o nome do produto ficam no <script> no fim do arquivo. */
+
+  :root {
+    --bg: #f6f7f4;
+    --surface: #ffffff;
+    --ink: #17201b;
+    --muted: #5b665f;
+    --line: #dfe4dd;
+    --brand: #1f7a4d;
+    --brand-ink: #ffffff;
+    --brand-soft: #e5f2ea;
+    --accent: #f2b233;
+    --danger: #b3261e;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101512;
+      --surface: #182019;
+      --ink: #e9efe9;
+      --muted: #a3b0a7;
+      --line: #2a352d;
+      --brand: #3fb87a;
+      --brand-ink: #0b130e;
+      --brand-soft: #1c2c22;
+      --accent: #f2b233;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101512; --surface: #182019; --ink: #e9efe9; --muted: #a3b0a7;
+    --line: #2a352d; --brand: #3fb87a; --brand-ink: #0b130e; --brand-soft: #1c2c22;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.55; font-size: 16px;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--brand); }
+
+  header.top { padding: 18px 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .logo { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .logo span { color: var(--brand); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--brand); color: var(--brand-ink); border: 0; border-radius: 999px;
+    padding: 14px 22px; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+    min-height: 48px;
+  }
+  .btn:hover { filter: brightness(1.07); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+  .btn.small { padding: 9px 16px; min-height: 40px; font-size: 0.92rem; }
+
+  .hero { padding: 36px 0 56px; }
+  .hero h1 { font-size: clamp(2rem, 5.5vw, 3.3rem); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 18px; max-width: 16ch; }
+  .hero h1 em { font-style: normal; color: var(--brand); }
+  .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 56ch; margin: 0 0 28px; }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .pill { display: inline-block; background: var(--brand-soft); color: var(--brand); font-weight: 600; font-size: 0.85rem; padding: 6px 12px; border-radius: 999px; margin-bottom: 18px; }
+
+  section { padding: 48px 0; }
+  section h2 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); letter-spacing: -0.02em; margin: 0 0 12px; line-height: 1.2; }
+  section p.sub { color: var(--muted); margin: 0 0 28px; max-width: 60ch; }
+
+  .grid3 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .card h3 { margin: 8px 0 6px; font-size: 1.08rem; }
+  .card p { margin: 0; color: var(--muted); }
+  .num { width: 34px; height: 34px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); display: grid; place-items: center; font-weight: 800; }
+
+  .pain { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .pain li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .pain li::before { content: "✗"; color: var(--danger); font-weight: 800; margin-right: 10px; }
+
+  /* ====== Gerador ====== */
+  #gerador { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  form { display: grid; gap: 28px; }
+  fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 0; min-width: 0; }
+  legend { font-weight: 700; padding: 0 6px; }
+  .fields { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  label { display: grid; gap: 6px; font-size: 0.92rem; font-weight: 600; }
+  label small { font-weight: 400; color: var(--muted); }
+  input, textarea, select {
+    font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line);
+    border-radius: 10px; padding: 11px 12px; width: 100%; min-height: 46px;
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  input:focus, textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; border-color: transparent; }
+  .full { grid-column: 1 / -1; }
+  .produto { display: grid; gap: 10px; grid-template-columns: 2fr 1.3fr 1fr auto; align-items: end; margin-bottom: 10px; }
+  .produto button.rm { background: none; border: 1.5px solid var(--line); border-radius: 10px; min-height: 46px; padding: 0 12px; cursor: pointer; color: var(--muted); font: inherit; }
+  @media (max-width: 640px) { .produto { grid-template-columns: 1fr 1fr; } .produto label:first-child { grid-column: 1 / -1; } }
+  .note { font-size: 0.85rem; color: var(--muted); }
+  .form-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+  /* ====== Comprovante (preview + impressão) ====== */
+  #preview-wrap { display: none; margin-top: 36px; }
+  #preview-wrap.on { display: block; }
+  .doc {
+    background: #fff; color: #111; border: 1px solid #ccc; border-radius: 6px;
+    padding: 28px; max-width: 800px; margin: 0 auto; font-size: 13.5px; line-height: 1.45;
+  }
+  .doc h2 { font-size: 17px; text-align: center; margin: 0 0 4px; letter-spacing: 0; }
+  .doc .docsub { text-align: center; font-size: 12px; color: #444; margin-bottom: 16px; }
+  .doc .empresa { border-bottom: 2px solid #111; padding-bottom: 10px; margin-bottom: 14px; }
+  .doc .empresa strong { font-size: 15px; }
+  .doc table { width: 100%; border-collapse: collapse; margin: 6px 0 14px; }
+  .doc th, .doc td { border: 1px solid #999; padding: 6px 8px; text-align: left; vertical-align: top; }
+  .doc th { background: #eee; font-weight: 700; }
+  .doc .sec { font-weight: 700; text-transform: uppercase; font-size: 11.5px; letter-spacing: 0.04em; margin: 12px 0 4px; }
+  .doc .cit { border: 2px solid #111; padding: 8px 10px; font-weight: 700; margin: 12px 0; }
+  .doc .assin { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 40px; }
+  .doc .assin div { border-top: 1px solid #111; padding-top: 6px; text-align: center; font-size: 12px; }
+  .doc .rodape { margin-top: 18px; font-size: 10.5px; color: #555; text-align: center; }
+  .upsell { max-width: 800px; margin: 20px auto 0; background: var(--brand-soft); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; }
+  .upsell strong { font-size: 1.05rem; }
+
+  .offer { background: var(--ink); color: var(--bg); border-radius: 20px; padding: 32px 22px; text-align: center; }
+  .offer h2 { color: var(--bg); }
+  .offer p { color: color-mix(in srgb, var(--bg) 78%, transparent); max-width: 52ch; margin: 0 auto 22px; }
+  .price { font-size: 2.2rem; font-weight: 800; margin: 6px 0; }
+  .price s { font-size: 1.1rem; opacity: 0.6; font-weight: 500; margin-right: 8px; }
+
+  .faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; }
+  .faq p { color: var(--muted); margin: 10px 0 0; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 0.85rem; text-align: center; }
+
+  .wa-float {
+    position: fixed; right: 16px; bottom: 16px; z-index: 10; background: #25d366; color: #0b2b17;
+    border-radius: 999px; padding: 13px 18px; font-weight: 700; text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  }
+
+  @media print {
+    body { background: #fff; }
+    body > *:not(main), main > *:not(#gerador), #gerador .wrap > *:not(#preview-wrap), .upsell, .wa-float { display: none !important; }
+    #gerador { border: 0; padding: 0; background: #fff; }
+    #preview-wrap { display: block !important; margin: 0; }
+    .doc { border: 0; padding: 0; max-width: none; }
+    @page { margin: 14mm; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo" data-nome-produto>Praga<span>Doc</span></div>
+    <a class="btn small ghost" href="#gerador">Gerar comprovante grátis</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <span class="pill">Para dedetizadoras e controladoras de pragas</span>
+      <h1>Termine o serviço e mande o <em>comprovante pronto</em> no WhatsApp.</h1>
+      <p class="lead">Chega de digitar comprovante no Word depois da visita. O técnico preenche no celular, o cliente assina na tela e o PDF no modelo da RDC 622 da Anvisa chega na hora pro restaurante.</p>
+      <div class="ctas">
+        <a class="btn" href="#gerador">Gerar um comprovante grátis agora</a>
+        <a class="btn ghost" data-wa="interesse" href="#">Quero ser um dos primeiros</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>Isso acontece na sua dedetizadora?</h2>
+      <p class="sub">A vigilância sanitária cobra o restaurante. O restaurante cobra você.</p>
+      <ul class="pain">
+        <li>O técnico volta da rua e alguém ainda tem que passar tudo pro Word.</li>
+        <li>O cliente liga pedindo a 2ª via do comprovante porque o fiscal chegou.</li>
+        <li>O comprovante sai sem a concentração do produto, sem as licenças ou sem o telefone do CIT.</li>
+        <li>A licença sanitária ou ambiental vence e ninguém percebe.</li>
+        <li>Você esquece de avisar o cliente que está na hora da próxima visita.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Como vai funcionar</h2>
+      <p class="sub">Simples o bastante para o técnico usar no celular, no meio da rua.</p>
+      <div class="grid3">
+        <div class="card"><div class="num">1</div><h3>Cadastre uma vez</h3><p>Sua empresa, licenças, responsável técnico e os produtos que você usa. O sistema avisa antes de qualquer licença vencer.</p></div>
+        <div class="card"><div class="num">2</div><h3>Técnico preenche no celular</h3><p>Escolhe o cliente, marca as pragas e os produtos, tira foto e colhe a assinatura do cliente na tela.</p></div>
+        <div class="card"><div class="num">3</div><h3>Comprovante sai sozinho</h3><p>PDF completo e o cartaz de aviso vão direto pro WhatsApp do cliente. Ele acessa todos os comprovantes num link, a qualquer hora.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gerador">
+    <div class="wrap">
+      <h2>Gere seu comprovante grátis</h2>
+      <p class="sub">Preencha, clique em gerar e salve como PDF. Sem cadastro. Seus dados ficam só no seu navegador.</p>
+
+      <form id="form" autocomplete="on">
+        <fieldset>
+          <legend>1. Sua empresa</legend>
+          <div class="fields">
+            <label>Razão social<input name="razao" required></label>
+            <label>Nome fantasia<input name="fantasia"></label>
+            <label>CNPJ<input name="cnpj" inputmode="numeric"></label>
+            <label>Telefone<input name="tel" inputmode="tel"></label>
+            <label class="full">Endereço<input name="end_empresa"></label>
+            <label>Nº da licença sanitária<input name="lic_san" required></label>
+            <label>Validade da licença sanitária<input name="lic_san_val" type="date" required></label>
+            <label>Nº da licença ambiental<input name="lic_amb" required></label>
+            <label>Validade da licença ambiental<input name="lic_amb_val" type="date" required></label>
+            <label>Responsável técnico<input name="rt" required></label>
+            <label>Registro no conselho <small>(ex.: CRBio 12345/01-D)</small><input name="rt_reg" required></label>
+          </div>
+          <p class="note">Esses dados ficam guardados neste navegador para a próxima vez.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Cliente e serviço</legend>
+          <div class="fields">
+            <label>Nome do cliente<input name="cliente" required></label>
+            <label>CNPJ/CPF do cliente<input name="cliente_doc"></label>
+            <label class="full">Endereço onde o serviço foi feito<input name="end_servico" required></label>
+            <label>Data da execução<input name="data" type="date" required></label>
+            <label>Garantia (assistência técnica)<input name="garantia" placeholder="Ex.: 90 dias" required></label>
+            <label class="full">Pragas-alvo<input name="pragas" placeholder="Ex.: baratas, formigas, roedores" required></label>
+            <label class="full">Tipo de serviço / áreas tratadas<input name="servico" placeholder="Ex.: desinsetização em gel na cozinha e estoque; iscas para roedores na área externa"></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Produtos usados</legend>
+          <div id="produtos"></div>
+          <button type="button" class="btn small ghost" id="add-produto">+ Adicionar produto</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Orientações ao cliente</legend>
+          <div class="fields">
+            <label class="full">Orientações<textarea name="orientacoes"></textarea></label>
+            <label>Telefone do Centro de Informação Toxicológica (CIT)<input name="cit" value="0800 722 6001" required></label>
+          </div>
+          <p class="note">0800 722 6001 é o Disque-Intoxicação nacional da Anvisa. Se o seu estado tiver um CIT próprio, você pode usar o número dele.</p>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="btn" type="submit">Gerar comprovante</button>
+          <span class="note">Modelo baseado no art. 19 da RDC 622/2022 da Anvisa. Confira com o seu responsável técnico.</span>
+        </div>
+      </form>
+
+      <div id="preview-wrap">
+        <div class="doc" id="doc"></div>
+        <div class="upsell">
+          <strong>Deu trabalho preencher tudo isso? No app completo, é só um clique.</strong>
+          <span>Empresa, licenças e produtos ficam salvos. O técnico só marca o que fez, o cliente assina no celular e o PDF vai sozinho pro WhatsApp.</span>
+          <div class="form-actions">
+            <button class="btn" type="button" id="imprimir">Salvar em PDF / Imprimir</button>
+            <a class="btn ghost" data-wa="upsell" href="#">Quero o app completo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="offer">
+        <span class="pill">Vagas limitadas</span>
+        <h2>Seja uma dedetizadora fundadora</h2>
+        <p>Estamos escolhendo as primeiras empresas para usar o app e ajudar a construir. Quem entrar agora trava o preço de fundador para sempre.</p>
+        <div class="price"><s>R$ 149</s>R$ 99/mês</div>
+        <p style="margin-bottom:22px">Sem fidelidade. Se não gostar, cancela.</p>
+        <a class="btn" data-wa="fundador" href="#">Quero garantir minha vaga</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="wrap">
+      <h2>Perguntas</h2>
+      <details><summary>O gerador grátis é grátis mesmo?</summary><p>Sim. Pode usar quantas vezes quiser. Ele serve para você conhecer a ideia.</p></details>
+      <details><summary>Esse comprovante vale para a vigilância sanitária?</summary><p>O modelo traz os itens que o art. 19 da RDC 622/2022 pede no comprovante de execução. A responsabilidade pelas informações é da sua empresa e do seu responsável técnico, então confira antes de entregar.</p></details>
+      <details><summary>Quando o app completo fica pronto?</summary><p>Estamos montando com as primeiras dedetizadoras. Chama no WhatsApp que a gente te conta a data e como participar.</p></details>
+      <details><summary>Funciona no celular?</summary><p>Sim. Foi pensado para o técnico usar no celular, na rua.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span data-nome-produto-txt>PragaDoc</span> · Feito para dedetizadoras brasileiras</div>
+</footer>
+
+<a class="wa-float" data-wa="flutuante" href="#">WhatsApp</a>
+
+<script>
+  // ====== CONFIGURE AQUI ======
+  // Seu WhatsApp com DDI + DDD, só números. Ex.: 5511987654321
+  const WHATSAPP = "5512982479064";
+  const NOME_PRODUTO = "PragaDoc";
+
+  const MENSAGENS = {
+    interesse: "Oi! Vi a página do " + NOME_PRODUTO + " e quero saber mais sobre o app de comprovante de dedetização.",
+    upsell: "Oi! Usei o gerador grátis do " + NOME_PRODUTO + " e quero saber do app completo.",
+    fundador: "Oi! Quero garantir minha vaga de dedetizadora fundadora no " + NOME_PRODUTO + " (R$ 99/mês).",
+    flutuante: "Oi! Vim pela página do " + NOME_PRODUTO + "."
+  };
+
+  document.querySelectorAll("[data-wa]").forEach(a => {
+    a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(MENSAGENS[a.dataset.wa] || MENSAGENS.flutuante);
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+  document.querySelectorAll("[data-nome-produto-txt]").forEach(el => el.textContent = NOME_PRODUTO);
+
+  // ====== Gerador ======
+  const form = document.getElementById("form");
+  const produtos = document.getElementById("produtos");
+  const CAMPOS_EMPRESA = ["razao", "fantasia", "cnpj", "tel", "end_empresa", "lic_san", "lic_san_val", "lic_amb", "lic_amb_val", "rt", "rt_reg", "cit"];
+  const CHAVE = "pragadoc_empresa";
+
+  function addProduto(p = {}) {
+    const row = document.createElement("div");
+    row.className = "produto";
+    row.innerHTML =
+      '<label>Nome comercial do produto<input data-p="nome" required></label>' +
+      '<label>Grupo químico<input data-p="grupo" placeholder="Ex.: piretroide" required></label>' +
+      '<label>Concentração<input data-p="conc" placeholder="Ex.: 0,05%" required></label>' +
+      '<button type="button" class="rm" aria-label="Remover produto">✕</button>';
+    row.querySelectorAll("input").forEach(i => i.value = p[i.dataset.p] || "");
+    row.querySelector(".rm").onclick = () => { if (produtos.children.length > 1) row.remove(); };
+    produtos.appendChild(row);
+  }
+  document.getElementById("add-produto").onclick = () => addProduto();
+  addProduto();
+
+  form.elements.data.valueAsDate = new Date();
+
+  try {
+    const salvo = JSON.parse(localStorage.getItem(CHAVE) || "null");
+    if (salvo) {
+      CAMPOS_EMPRESA.forEach(k => { if (salvo[k]) form.elements[k].value = salvo[k]; });
+      if (Array.isArray(salvo.produtos) && salvo.produtos.length) {
+        produtos.innerHTML = "";
+        salvo.produtos.forEach(addProduto);
+      }
+    }
+  } catch (e) {}
+
+  const esc = s => String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const dataBR = s => s ? s.split("-").reverse().join("/") : "";
+
+  form.addEventListener("submit", ev => {
+    ev.preventDefault();
+    const d = Object.fromEntries(new FormData(form).entries());
+    const lista = [...produtos.children].map(r => {
+      const o = {};
+      r.querySelectorAll("input").forEach(i => o[i.dataset.p] = i.value.trim());
+      return o;
+    }).filter(p => p.nome);
+
+    try {
+      const guardar = { produtos: lista };
+      CAMPOS_EMPRESA.forEach(k => guardar[k] = d[k]);
+      localStorage.setItem(CHAVE, JSON.stringify(guardar));
+    } catch (e) {}
+
+    const linhas = lista.map(p => `<tr><td>${esc(p.nome)}</td><td>${esc(p.grupo)}</td><td>${esc(p.conc)}</td></tr>`).join("");
+
+    document.getElementById("doc").innerHTML = `
+      <div class="empresa">
+        <strong>${esc(d.fantasia || d.razao)}</strong><br>
+        ${esc(d.razao)}${d.cnpj ? " · CNPJ " + esc(d.cnpj) : ""}<br>
+        ${[esc(d.end_empresa), d.tel ? "Tel. " + esc(d.tel) : ""].filter(Boolean).join(" · ")}${d.end_empresa || d.tel ? "<br>" : ""}
+        Licença sanitária nº ${esc(d.lic_san)} (válida até ${dataBR(d.lic_san_val)}) ·
+        Licença ambiental nº ${esc(d.lic_amb)} (válida até ${dataBR(d.lic_amb_val)})
+      </div>
+      <h2>COMPROVANTE DE EXECUÇÃO DE SERVIÇO</h2>
+      <div class="docsub">Controle de vetores e pragas urbanas · RDC Anvisa nº 622/2022</div>
+
+      <div class="sec">Cliente</div>
+      <table>
+        <tr><th style="width:30%">Cliente</th><td>${esc(d.cliente)}${d.cliente_doc ? " · " + esc(d.cliente_doc) : ""}</td></tr>
+        <tr><th>Endereço do serviço</th><td>${esc(d.end_servico)}</td></tr>
+        <tr><th>Data da execução</th><td>${dataBR(d.data)}</td></tr>
+        <tr><th>Pragas-alvo</th><td>${esc(d.pragas)}</td></tr>
+        ${d.servico ? `<tr><th>Serviço / áreas</th><td>${esc(d.servico)}</td></tr>` : ""}
+        <tr><th>Prazo de assistência técnica</th><td>${esc(d.garantia)}</td></tr>
+      </table>
+
+      <div class="sec">Produtos utilizados</div>
+      <table>
+        <tr><th>Produto</th><th>Grupo químico</th><th>Concentração</th></tr>
+        ${linhas || '<tr><td colspan="3">—</td></tr>'}
+      </table>
+
+      ${d.orientacoes ? `<div class="sec">Orientações ao cliente</div><p style="white-space:pre-wrap;margin:0 0 8px">${esc(d.orientacoes)}</p>` : ""}
+
+      <div class="cit">Em caso de intoxicação, ligue para o Centro de Informação Toxicológica: ${esc(d.cit)}</div>
+
+      <div class="assin">
+        <div>${esc(d.rt)}<br>Responsável técnico · ${esc(d.rt_reg)}</div>
+        <div>Assinatura do cliente / responsável no local</div>
+      </div>
+      <div class="rodape">Gerado grátis com ${esc(NOME_PRODUTO)}</div>`;
+
+    const wrap = document.getElementById("preview-wrap");
+    wrap.classList.add("on");
+    wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  document.getElementById("imprimir").onclick = () => window.print();
+</script>
+</body>
+</html>
